@@ -21,7 +21,7 @@ echo -e "\e[36m <<<<<<dependencies>>>>>>\e[0m"
 npm install
 
 echo -e "\e[36m <<<<<<Create config files>>>>>>\e[0m"
-cp catalogue.conf /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop-shell/catalogue.conf /etc/systemd/system/catalogue.service
 
 echo -e "\e[36m <<<<<<start service>>>>>>\e[0m"
 systemctl daemon-reload
