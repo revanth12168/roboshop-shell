@@ -1,6 +1,6 @@
 script=$(realpath $0)
 script_path=$(dirname "$script")
-source ${script_name}/common.sh
+source ${script_path}/common.sh
 mysql_appuser_password=$1
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"

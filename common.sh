@@ -1,6 +1,5 @@
 app_user=roboshop
 
-
 fnc_nodejs() {
   echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
