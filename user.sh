@@ -1,4 +1,6 @@
-source common.sh
+script=$(realpath $0)
+script_path=$(dirname "$script")
+source ${script_name}/common.sh
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
@@ -24,7 +26,7 @@ echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 npm install
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
-cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
+cp ${script_path}/user.service /etc/systemd/system/user.service
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 systemctl daemon-reload
@@ -32,7 +34,7 @@ systemctl enable user
 systemctl restart user
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
-cp /home/centos/roboshop-shell/mongodb.conf /etc/yum.repos.d/mongo.repo
+cp ${script_path}/mongodb.conf /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 yum install mongodb-org-shell -y

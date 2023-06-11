@@ -1,4 +1,7 @@
-source common.sh
+script=$(realpath $0)
+script_path=$(dirname "$script")
+source ${script_name}/common.sh
+
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 yum install maven -y
 
@@ -23,7 +26,7 @@ echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 mv target/shipping-1.0.jar shipping.jar
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
-cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service
+cp ${script_path}/shipping.service /etc/systemd/system/shipping.service
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 systemctl daemon-reload

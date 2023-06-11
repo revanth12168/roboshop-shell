@@ -1,8 +1,12 @@
+script=$(realpath $0)
+script_path=$(dirname "$script")
+source ${script_name}/common.sh
+
 echo -e "\e[36m <<<<< Installing nginx >>>>>\e[0m"
 yum install nginx -y
 
 echo -e "\e[36m <<<<< creating and updating configuration file >>>>>\e[0m"
-cp /home/centos/roboshop-shell/roboshop.conf /etc/nginx/default.d/roboshop.conf
+cp ${script_path}/roboshop.conf /etc/nginx/default.d/roboshop.conf
 
 echo -e "\e[36m <<<<< Remove the default content that web server >>>>>\e[0m"
 rm -rf /usr/share/nginx/html/*
