@@ -1,33 +1,38 @@
 app_user=roboshop
 
+print head() {
+  echo -e "\e[36m <<<<< $1 >>>>>\e[0m"
+}
+
 fnc_nodejs() {
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+
+  print head "Repo file as a rpm"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   yum install nodejs -y
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   useradd ${app_user}
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   rm -rf /app
   mkdir /app
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   cd /app
   unzip /tmp/${component}.zip
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   npm install
 
-  echo -e "\e[32m <<<<<<checking>>>>>\e[0m"
+  print head "checking"
   cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
-  echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
+  print head "Repo file as a rpm"
   systemctl daemon-reload
   systemctl enable ${component}
   systemctl restart ${component}
