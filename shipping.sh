@@ -1,6 +1,7 @@
 script=$(realpath $0)
 script_path=$(dirname "$script")
 source ${script_name}/common.sh
+mysql_appuser_password=$1
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 yum install maven -y
@@ -35,7 +36,7 @@ systemctl restart shipping
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 yum install mysql -y
-mysql -h mysql-dev.revanthr.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h mysql-dev.revanthr.online -uroot -p${mysql_appuser_password} < /app/schema/shipping.sql
 
 echo -e "\e[36m <<<<< Repo file as a rpm >>>>>\e[0m"
 systemctl daemon-reload
