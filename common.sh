@@ -4,6 +4,17 @@ print head() {
   echo -e "\e[36m <<<<< $1 >>>>>\e[0m"
 }
 
+schema setup() {
+
+  print head copy Mongo DB
+  cp ${script_path}/mongodb.conf /etc/yum.repos.d/mongo.repo
+
+  print head Install mongodb client
+  yum install mongodb-org-shell -y
+  mongo --host mongodb-dev.revanthr.online </app/schema/catalogue.js
+
+}
+
 fnc_nodejs() {
 
   print head "Repo file as a rpm"
@@ -36,4 +47,6 @@ fnc_nodejs() {
   systemctl daemon-reload
   systemctl enable ${component}
   systemctl restart ${component}
+  schema setup
 }
+
