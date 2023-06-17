@@ -116,6 +116,7 @@ func_java() {
   mvn clean package
   mv target/${component}-1.0.jar ${component}.jar
 
+  schema_setup
   func_systemd_setup
 
 }
