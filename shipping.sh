@@ -8,7 +8,7 @@ if [ -z "$mysql_appuser_password"]; then
   exit
 fi
 
-component=shipping
+component="shipping"
 schema_setup=mysql
 func_java
 
